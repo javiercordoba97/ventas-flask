@@ -2,10 +2,8 @@ import pandas as pd
 import mysql.connector
 
 def cargar_csv_a_mysql():
-    # Leer CSV
     df = pd.read_csv("data/ventas.csv")
 
-    # Conectar a MySQL
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
@@ -14,7 +12,6 @@ def cargar_csv_a_mysql():
     )
     cursor = conn.cursor()
 
-    # Insertar filas
     for _, row in df.iterrows():
         cursor.execute(
             "INSERT INTO ventas (fecha, producto, cantidad, precio) VALUES (%s, %s, %s, %s)",
