@@ -2,6 +2,7 @@ import csv
 from flask import Flask, render_template, request, redirect
 from services.mysql_service import execute_query, fetch_all
 from services.dataframe_service import ventas_por_producto
+from services.dataframe_service import ventas_por_producto, producto_mas_vendido
 
 app = Flask(__name__)
 
@@ -35,7 +36,9 @@ def ventas():
     # Análisis con pandas
     totales = ventas_por_producto()
 
-    return render_template("ventas.html", ventas=ventas, totales=totales)
+    mas_vendido = producto_mas_vendido()
+
+    return render_template("ventas.html", ventas=ventas, totales=totales, mas_vendido=mas_vendido)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -34,6 +34,10 @@
       <li>{{ producto }}: ${{ total }}</li>
     {% endfor %}
   </ul>
+  <h3>Producto más vendido</h3>
+<p>
+  {{ mas_vendido.producto }} — {{ mas_vendido.cantidad }} unidades vendidas
+</p>
 
   <p><a href="/">Agregar nueva venta</a></p>
 </body>

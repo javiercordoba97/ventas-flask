@@ -27,3 +27,10 @@ def ventas_totales():
 def promedio_venta():
     df = get_dataframe()
     return df["total"].mean()
+
+def producto_mas_vendido():
+    df = get_dataframe()
+    resultado = df.groupby("producto")["cantidad"].sum()
+    producto = resultado.idxmax()
+    cantidad = resultado.max()
+    return {"producto": producto, "cantidad": cantidad}
